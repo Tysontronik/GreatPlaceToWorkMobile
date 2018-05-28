@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<array name="indicator_colors">
+		<item>@color/gray</item>
+		<!--Default-->
+		<item>@color/green</item>
+		<!--Wrong-->
+		<item>@color/GreenYellow</item>
+		<!--Right-->
+		<item>@color/green</item>
+		<!--Skipped-->
+		<item>@color/green</item>
+		<!--Current-->
+		<item>@color/green</item>
+		<!--Processed-->
+
+	</array>
+	<array name="border_state_colors">
+		<item>@color/green</item>
+		<!--Default-->
+		<item>@color/green</item>
+		<!--Wrong-->
+		<item>@color/DarkGreen</item>
+		<!--Right-->
+		<item>@color/GreenYellow</item>
+		<!--Skipped-->
+		<item>@color/Green</item>
+		<!--Current-->
+		<item>@color/navigationBarColorAttempted</item>
+		<!--Processed-->
+
+	</array>
+
+	<array name="text_state_colors">
+		<item>@color/black</item>
+		<!--Default-->
+		<item>@color/green</item>
+		<!--Wrong-->
+		<item>@color/lightGreen</item>
+		<!--Right-->
+		<item>@color/gray</item>
+		<!--Skipped-->
+		<item>@color/black</item>
+		<!--Current-->
+		<item>@color/white</item>
+		<!--Processed-->
+	</array>
+
+</resources>

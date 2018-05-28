@@ -1,0 +1,65 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:elevation="4dp"
+        android:background="@color/gray1"
+        android:paddingTop="@dimen/activity_horizontal_margins">
+        <ImageView
+            android:id="@+id/img_backv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:clickable="true"
+            android:src="@drawable/ic_back"/>
+
+        <TextView
+            android:id="@+id/tvtil"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_gravity="center_vertical"
+            android:text="CURSO"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:padding="4dp"
+            android:elevation="4dp"
+            android:textColor="@color/gray"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <VideoView
+            android:id="@+id/Viewvideo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="100dp"
+          />
+
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="340dp">
+    <TextView
+        android:id="@+id/tv_textIniciovideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="12"
+        android:maxLines="1000"
+        android:textAlignment="viewStart"
+        android:scrollbars="vertical"
+        android:text="Descripción del video mensaje de tu CEO" />
+    </RelativeLayout>
+</FrameLayout>

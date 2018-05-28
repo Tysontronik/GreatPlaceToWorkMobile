@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.learning.gptw.greatplacetowork_learning">
+
+    <permission
+        android:name="android.permission.ACCESS_FINE_LOCATION"
+        android:protectionLevel="dangerous" />
+    <permission
+        android:name="android.permission.ACCESS_COARSE_LOCATION"
+        android:protectionLevel="dangerous" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.example.mapdemo.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/gptw"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_gptw"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Inicio.FragmentInicio.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Splash.SplashGreatPlaceToWork"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Design.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login.LoginGreatPlaceToWork"
+            android:label="@string/title_activity_login_great_place_to_work"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Login.OlvidoContrasenaActivity"
+            android:label="@string/title_activity_olvido_contrasena"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Adapter.IsOnLineNotFound"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Cursos.CursosFragment.video.VideoActivity"
+            android:label="@string/title_activity_video"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Quiz.Quiz"
+            android:label="@string/title_activity_quiz"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Quiz.QuizViewCardFragment.QuizCardctivity"
+            android:label="@string/title_activity_quiz_cardctivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Cursos.CursosFragment.Actividad.ActividadActivity"
+            android:label="@string/title_activity_actividad"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

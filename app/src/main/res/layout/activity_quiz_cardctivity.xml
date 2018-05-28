@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:background="@color/gray1"
+        android:paddingTop="@dimen/activity_horizontal_margins"
+        android:id="@+id/relativeLayout2">
+
+
+        <TextView
+            android:id="@+id/actionbarid"
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/img_back"
+            android:elevation="4dp"
+            android:padding="4dp"
+            android:text="PREGUNTA"
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:layout_alignBaseline="@+id/actionbarid"
+            android:layout_alignBottom="@+id/actionbarid"
+            android:layout_toEndOf="@+id/actionbarid"
+            android:text="#"
+            android:textColor="@color/gray"
+            android:textSize="20dp"
+            android:id="@+id/textView5" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:layout_alignBaseline="@+id/textView5"
+            android:layout_alignBottom="@+id/textView5"
+            android:layout_toEndOf="@+id/textView5"
+            android:text="/"
+            android:textColor="@color/gray"
+            android:textSize="20dp"
+            android:id="@+id/line"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:layout_alignBaseline="@+id/line"
+            android:layout_alignBottom="@+id/line"
+            android:layout_toEndOf="@+id/line"
+            android:text="#"
+            android:textColor="@color/gray"
+            android:textSize="20dp"
+            android:id="@+id/textView6" />
+    </RelativeLayout>
+
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:layout_gravity="bottom"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingBottom="30dp"
+        android:paddingEnd="@dimen/card_padding"
+        android:paddingLeft="@dimen/card_padding"
+        android:paddingRight="@dimen/card_padding"
+        android:paddingStart="@dimen/card_padding" />
+
+</android.support.design.widget.CoordinatorLayout>
+

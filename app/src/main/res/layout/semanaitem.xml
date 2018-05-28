@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <TableLayout
+        android:id="@+id/tabla_cuerpo"
+        android:layout_width="match_parent"
+        android:layout_height="114dp"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:elevation="4dp"
+   android:gravity="center"
+        android:background="@drawable/border_textview">
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray2">
+
+            <TextView
+                android:id="@+id/tv_semana1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/gray2"
+                android:padding="5dp"
+                android:text="@string/semana11"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tv_seman1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/gray2"
+                android:padding="5dp"
+                android:textColor="@color/gray2"
+                android:text="@string/semana11"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"></TextView>
+
+
+            <TextView
+                android:id="@+id/tv_semana1Date1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/gray2"
+                android:padding="5dp"
+                android:text="@string/Fecha"
+                android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
+
+            <ImageView
+                android:id="@+id/img_imgsem1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/gray2"
+                android:src="@drawable/ic_circlegray"
+                android:textAppearance="?android:attr/textAppearanceMedium"></ImageView>
+
+            <ImageView
+                android:id="@+id/imgsem1download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:background="@color/gray2"
+                android:src="@drawable/ic_download"
+                android:textAppearance="?android:attr/textAppearanceMedium"></ImageView>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow1sem1"
+            android:layout_width="match_parent"
+            android:layout_height="114dp"
+            android:background="@color/gray1"
+            android:paddingTop="@dimen/paddingTopTable">
+
+            <TextView
+                android:id="@+id/descsem1"
+                android:layout_width="wrap_content"
+                android:layout_height="114dp"
+                android:text="@string/toma_desicion"
+                android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
+
+            <TextView
+                android:id="@+id/textView121"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
+
+            <ImageView
+                android:id="@+id/img_imgsem1Next1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_next"
+                android:clickable="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"></ImageView>
+        </TableRow>
+
+
+    </TableLayout>
+</LinearLayout>

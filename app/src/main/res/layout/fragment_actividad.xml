@@ -1,0 +1,102 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.learning.gptw.greatplacetowork_learning.Cursos.CursosFragment.Actividad.ActividadFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:elevation="4dp"
+        android:background="@color/gray1"
+        android:paddingTop="@dimen/activity_horizontal_margins">
+        <ImageView
+            android:id="@+id/img_backAc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:clickable="true"
+            android:src="@drawable/ic_back"/>
+
+        <TextView
+            android:id="@+id/actionbarid"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_gravity="center_vertical"
+            android:text="Actividad"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:padding="4dp"
+            android:elevation="4dp"
+            android:textColor="@color/gray"
+            android:textSize="20dp" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_titleActividad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:text="@string/hello_blank_fragment" />
+
+        <ScrollView
+            android:id="@+id/SCROLLER_ID"
+            android:layout_width="fill_parent"
+            android:layout_height="220dp"
+            android:layout_alignParentStart="true"
+
+            android:layout_below="@+id/tv_titleActividad"
+            android:fillViewport="true"
+            android:scrollbars="horizontal">
+
+            <TextView
+                android:id="@+id/tv_descActividad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_titleActividad"
+                android:scrollbars="vertical" />
+        </ScrollView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/SCROLLER_ID"
+            android:layout_marginTop="20dp"
+            android:id="@+id/editText" />
+
+        <TextView
+            android:id="@+id/tvmsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:hint="Comentario"
+            android:layout_below="@+id/editText" />
+
+        <Button
+            android:id="@+id/btn_btnEnviaractivida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvmsg"
+            android:layout_marginEnd="11dp"
+            android:layout_marginTop="40dp"
+            android:layout_toStartOf="@+id/btn_btnNextProgram"
+            android:text="Enviar" />
+
+
+        <Button
+            android:id="@+id/btn_btnNextProgram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btn_btnEnviaractivida"
+            android:layout_alignBottom="@+id/btn_btnEnviaractivida"
+            android:layout_alignParentEnd="true"
+            android:text="Continuar con el prograa" />
+    </RelativeLayout>
+</LinearLayout>

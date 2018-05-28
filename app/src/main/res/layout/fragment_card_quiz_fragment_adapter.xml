@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    app:cardUseCompatPadding="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:background="@color/GreenYellow"
+            android:paddingTop="@dimen/activity_horizontal_margins"
+            android:id="@+id/relativeLayout2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:text="#"
+                android:textColor="@color/gray"
+                android:textSize="20dp"
+                android:id="@+id/textView5" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:layout_alignBaseline="@+id/textView5"
+                android:layout_alignBottom="@+id/textView5"
+                android:layout_toEndOf="@+id/textView5"
+                android:text="/"
+                android:textColor="@color/gray"
+                android:textSize="20dp"
+                android:id="@+id/line"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:layout_alignBaseline="@+id/line"
+                android:layout_alignBottom="@+id/line"
+                android:layout_toEndOf="@+id/line"
+                android:text="#"
+                android:textColor="@color/gray"
+                android:textSize="20dp"
+                android:id="@+id/textView6" />
+            <TextView
+                android:id="@+id/actionbarid"
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:elevation="4dp"
+                android:text="PUNTOS"
+                android:layout_alignBaseline="@+id/textView6"
+                android:layout_alignBottom="@+id/textView6"
+                android:layout_toEndOf="@+id/textView6"
+                android:textColor="@color/gray"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:id="@+id/tv_textInicios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/relativeLayout2"
+            android:elevation="4dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:scrollbars="vertical"
+            android:text="Cuestion one" />
+
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ListView_listadoQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="425dp"></ListView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:elevation="4dp"
+            android:background="@color/gray1"
+            android:paddingTop="@dimen/activity_horizontal_margins"
+            android:id="@+id/relativeLayout3">
+            <ImageView
+                android:id="@+id/img_backQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:clickable="true"
+                android:src="@drawable/ic_back"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="21dp"
+                android:layout_toStartOf="@+id/img_NextQuestion"
+                android:elevation="4dp"
+                android:padding="4dp"
+                android:text="SIGUIENTE"
+                android:textAlignment="center"
+                android:textColor="@color/gray"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/img_NextQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="left"
+                android:layout_marginEnd="22dp"
+                android:clickable="true"
+                android:src="@drawable/ic_next" />
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

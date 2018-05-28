@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><declare-styleable name="StateProgressBar">
+
+    <attr name="spb_stateBackgroundColor" format="color" />
+    <attr name="spb_stateForegroundColor" format="color" />
+
+    <attr name="spb_stateNumberBackgroundColor" format="color" />
+    <attr name="spb_stateNumberForegroundColor" format="color" />
+
+    <attr name="spb_currentStateDescriptionColor" format="color" />
+    <attr name="spb_stateDescriptionColor" format="color" />
+
+    <attr name="spb_stateSize" format="dimension" />
+
+    <attr name="spb_stateTextSize" format="dimension" />
+
+    <attr name="spb_stateDescriptionSize" format="dimension" />
+
+    <attr name="spb_stateLineThickness" format="dimension" />
+
+    <attr name="spb_checkStateCompleted" format="boolean" />
+
+
+    <attr name="spb_animateToCurrentProgressState" format="boolean" />
+
+    <attr name="spb_enableAllStatesCompleted" format="boolean" />
+
+    <attr name="spb_descriptionTopSpaceDecrementer" format="dimension" />
+
+    <attr name="spb_descriptionTopSpaceIncrementer" format="dimension" />
+
+    <attr name="spb_animationDuration" format="integer" />
+
+    <attr name="spb_animationStartDelay" format="integer" />
+
+
+    <attr name="spb_currentStateNumber" format="integer"/>
+
+    <attr name="spb_showStateText" format="boolean"/>
+
+    <attr name="spb_maxStateNumber" format="integer"/>
+
+</declare-styleable></resources>

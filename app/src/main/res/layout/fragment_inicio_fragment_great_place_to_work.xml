@@ -1,0 +1,151 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.learning.gptw.greatplacetowork_learning.Inicio.FragmentInicio.MainActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:elevation="4dp"
+        android:background="@color/gray1"
+        android:paddingTop="@dimen/activity_horizontal_margins">
+
+
+        <TextView
+            android:id="@+id/actionbarid"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_gravity="center_vertical"
+            android:text="INICIO"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:padding="4dp"
+            android:elevation="4dp"
+            android:textColor="@color/gray"
+            android:textSize="20dp" />
+    </LinearLayout>
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/relativelaou1"
+        android:layout_width="match_parent"
+        android:layout_height="23dp">
+
+        <TextView
+
+            android:id="@+id/tvtil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray1"
+            android:text=""
+            android:textAlignment="center" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relativelayou1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_textInicios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:lines="8"
+        android:maxLines="1000"
+        android:elevation="4dp"
+        android:scrollbars="vertical"
+        android:text="" />
+
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/line_gray"/>
+    <RelativeLayout
+        android:id="@+id/relativelayout1"
+        android:layout_width="match_parent"
+        android:layout_height="72dp">
+
+        <HorizontalScrollView
+            android:id="@+id/navContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+
+            android:paddingTop="5dp"
+            android:scrollbars="none">
+
+            <com.library.NavigationBar
+                android:id="@+id/navBar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:padding="16dp"
+                app:central_line_height="1dp"
+                app:enable_border="true"
+                app:only_border="false"
+                app:tab_border_color_array="@array/border_state_colors"
+                app:tab_color_array="@array/indicator_colors"
+                app:tab_indicator_color="@color/green"
+                app:tab_padding="18dp"
+                android:layout_marginLeft="70dp"
+                android:elevation="4dp"
+                app:tab_strok_width="3dp"
+                app:tab_text_color_array="@array/text_state_colors"
+                app:tab_text_size="18sp"/>
+        </HorizontalScrollView>
+
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/gray2"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="4dp"
+        android:background="@color/line_gray"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/activity_horizontal_margins"
+        android:elevation="4dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ListView_listado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="114dp"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:background="@color/line_gray">
+
+
+
+        </TableLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
+
+</LinearLayout>

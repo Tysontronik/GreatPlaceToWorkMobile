@@ -1,0 +1,105 @@
+<resources>
+
+    <!--
+       Spanish Unicode characters.
+
+       A = "\u00C1";
+       E = "\u00C9";
+       I = "\u00CD";
+       O = "\u00D3";
+       U = "\u00DA";
+       EGNE = "\00D1";
+       UDIE = "\u00DC";
+
+       a = "\u00E1";
+       e = "\u00E9";
+       i = "\u00ED";
+       o = "\u00F3";
+       u = "\u00FA";
+       egne = "\u00F1";
+       udie = "\u00FC";
+
+       interrogracion = "\u00BF";
+       admiracion = "\u00A1";
+      
+   -->
+
+    <!--Aplication-->
+    <string name="app_name">Great Place to  Work - Learning</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_splash_great_place_to_work">SplashGreatPlaceToWork</string>
+    <string name="title_activity_configuracion_great_placeto_work">ConfiguracionGreatPlacetoWork</string>
+    <string name="aceptar">Aceptar</string>
+
+    <!--Settings-->
+    <string name="action_settings">Settings</string>
+    <string name="forget_logout">Forget and logout</string>
+    <string name="logout">Logout</string>
+
+
+    <!-- Login-->
+    <string name="title_activity_login_great_place_to_work">Login</string>
+    <string name="login">Login</string>
+    <string name="login_ingresar">Ingresar</string>
+    <string name="start_here">Comienza aqu\u00ED</string>
+    <string name="usuario">Usuario</string>
+    <string name="password">Contrase\u00F1a</string>
+    <string name="forgotten_password">Olvid\u00E9 mi contrase\u00F1a</string>
+    <string name="campo_vacio">Campo vacio o no valido</string>
+
+    <!--Main Menu-->
+
+    <string name="inicio">Inicio</string>
+    <string name="olvidar_y_salir">Olvidar y salir</string>
+    <string name="salir">Salir</string>
+
+
+    <!--Inicio-->
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="semana1">1</string>
+    <string name="semana29">2-9</string>
+    <string name="semana1016">10-16</string>
+    <string name="semana1723">17-23</string>
+    <string name="title_activity_cursos">Cursos</string>
+    <string name="title_activity_cursos_great_place_to_work">CursosGreatPlaceToWork</string>
+    <string name="inicios">INICIO</string>
+    <string name="semana">Semana:</string>
+    <string name="semana11">Semana 1</string>
+    <string name="semana129">Semana 2-9</string>
+    <string name="semana11016">Semana 10-16</string>
+    <string name="semana11723">Semana 17-23</string>
+    <string name="Fecha">Fecha</string>
+    <string name="toma_desicion">Tomando la Decisi\u00F3n</string>
+    <string name="Credibilidad">Credibilidad</string>
+    <string name="aprender">Aprender, Accionar y Crear H\u00E1bito</string>
+
+    <!--Cursos-->
+    <string name="cursos">CURSOS</string>
+    <string name="informar_cursos">Informar acerca de asusntos y cambios importantes.</string>
+    <string name="video">Video</string>
+    <string name="quiz">Quiz</string>
+    <string name="actividad">Actividad</string>
+    <string name="yunacosamas">Y una cosa m\u00E1s...</string>
+    <string name="title_activity_video">Video</string>
+    <string name="title_activity_cursos_fragment">CursosFragment</string>
+    <string name="title_activity_olvido_contrasena">OlvidoContrasenaActivity</string>
+
+
+    <!-- Olvido contraseña-->
+    <string name="Olvidaste">Ingresa tu correo</string>
+    <string name="title_activity_quiz">Quiz</string>
+    <string name="title_activity_quiz_cardctivity">QuizCardctivity</string>
+    <string name="title_activity_actividad">ActividadActivity</string>
+
+
+
+    <string name="activity_title_home">Notes</string>
+    <string name="msg_no_notes">No notes found!</string>
+    <string name="lbl_new_note_title">New Note</string>
+    <string name="lbl_edit_note_title">Edit Note</string>
+    <string name="hint_enter_note">Enter your note!</string>
+
+
+</resources>
