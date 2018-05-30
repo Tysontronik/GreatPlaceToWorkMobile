@@ -2,18 +2,14 @@ package com.learning.gptw.greatplacetowork_learning.Utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
 import android.util.Log;
-
-import com.learning.gptw.greatplacetowork_learning.Constans.Constans;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.Callable;
 
-import static com.learning.gptw.greatplacetowork_learning.Login.LoginGreatPlaceToWork.TAG;
 
 /**
  * Clase que se encarga de probar la conexion a una URL en especifico
@@ -21,6 +17,10 @@ import static com.learning.gptw.greatplacetowork_learning.Login.LoginGreatPlaceT
  * @since 23/05/2018
  */
 public class NetworkTestConnectionCallUtil implements Callable<Boolean> {
+
+    private  static final String LOGGER_TAG =  NetworkTestConnectionCallUtil.class.getSimpleName();
+
+
     /**
      *URL to test
      */
@@ -68,7 +68,6 @@ public class NetworkTestConnectionCallUtil implements Callable<Boolean> {
      */
     @Override
     public Boolean call() {
-
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         final NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
@@ -81,10 +80,10 @@ public class NetworkTestConnectionCallUtil implements Callable<Boolean> {
                 urlc.connect();
                 return (urlc.getResponseCode() == this.expectedResponseCode);
             } catch (IOException e) {
-                Log.e(TAG, "Error checking internet connection", e);
+                Log.e(LOGGER_TAG, "Error checking connection ["+this.testUrl+"]", e);
             }
         } else {
-            Log.d(TAG, "No network available!");
+            Log.d(LOGGER_TAG, "No network available!");
         }
         return false;
     }

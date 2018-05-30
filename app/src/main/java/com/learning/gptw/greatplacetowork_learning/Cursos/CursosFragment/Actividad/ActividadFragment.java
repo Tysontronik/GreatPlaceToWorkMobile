@@ -21,7 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.learning.gptw.greatplacetowork_learning.Constans.Constans;
+import com.learning.gptw.greatplacetowork_learning.Constans.UrlConstants;
 import com.learning.gptw.greatplacetowork_learning.Models.ActividadModulo;
 import com.learning.gptw.greatplacetowork_learning.R;
 
@@ -122,7 +122,7 @@ public class ActividadFragment extends Fragment {
 
 
         //String Request initialized
-        mStringRequest = new StringRequest(Request.Method.GET, Constans.servicesURL + Constans.actividadURL + urlActividad, new Response.Listener<String>() {
+        mStringRequest = new StringRequest(Request.Method.GET, UrlConstants.servicesURL + UrlConstants.actividadURL + urlActividad, new Response.Listener<String>() {
 
 
             @Override

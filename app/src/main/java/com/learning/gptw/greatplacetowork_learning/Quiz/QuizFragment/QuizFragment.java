@@ -23,7 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.learning.gptw.greatplacetowork_learning.Constans.Constans;
+import com.learning.gptw.greatplacetowork_learning.Constans.UrlConstants;
 import com.learning.gptw.greatplacetowork_learning.Models.EvaluacionModulo;
 import com.learning.gptw.greatplacetowork_learning.Models.PreguntasModulo;
 import com.learning.gptw.greatplacetowork_learning.R;
@@ -166,7 +166,7 @@ public class QuizFragment extends Fragment {
 
     private void loadQuiztitle() {
 
-        urlLoadQuiztitle = Constans.servicesURL + Constans.evaluacionURL + idPreguntasEvaluaciones;
+        urlLoadQuiztitle = UrlConstants.servicesURL + UrlConstants.evaluacionURL + idPreguntasEvaluaciones;
 
 
         //RequestQueue initialized

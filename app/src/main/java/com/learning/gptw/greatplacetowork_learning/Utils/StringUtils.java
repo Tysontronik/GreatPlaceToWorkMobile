@@ -1,5 +1,7 @@
 package com.learning.gptw.greatplacetowork_learning.Utils;
 
+import com.learning.gptw.greatplacetowork_learning.Constans.Constants;
+
 import java.util.Formatter;
 
 /**
@@ -40,9 +42,39 @@ public class StringUtils {
     public static String formatStringBuilder(String stringWithPattern, Object... values) {
 
         stringBulider.setLength(0);
-        return formatter.format(stringWithPattern,values).toString();
+        return formatter.format(stringWithPattern, values).toString();
 
     }
 
+    /**
+     * @param stringToEvaluate string to evaluate
+     * @return True if the string is not empty
+     */
+    public static Boolean isNotEmptyOrNull(String stringToEvaluate) {
+
+        Boolean notEmptyFlag = Boolean.TRUE;
+
+        if (stringToEvaluate == null || Constants.EMPTY_STRING.equals(stringToEvaluate)) {
+            notEmptyFlag = Boolean.FALSE;
+        }
+        return notEmptyFlag;
+    }
+
+    /**
+     * Evaluate Many strings , if one are null or empty return false
+     *
+     * @param stringsToEvaluate strings array to iterate and evaluate
+     * @return True if  any string is null or empty
+     */
+    public static Boolean isAnyEmptyOrNull(String... stringsToEvaluate) {
+        Boolean notEmptyFlag = Boolean.TRUE;
+
+        for (String stringToEvaluate : stringsToEvaluate) {
+            notEmptyFlag =isNotEmptyOrNull(stringToEvaluate);
+                if(!notEmptyFlag){ break; }
+        }
+
+        return !notEmptyFlag;
+    }
 
 }

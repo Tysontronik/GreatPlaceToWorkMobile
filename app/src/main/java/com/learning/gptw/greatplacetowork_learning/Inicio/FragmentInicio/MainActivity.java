@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
+import com.learning.gptw.greatplacetowork_learning.Constans.IntentExtraKeyParamsConstants;
 import com.learning.gptw.greatplacetowork_learning.Cursos.CursosFragment.video.VideoActivity;
 import com.learning.gptw.greatplacetowork_learning.Cursos.CursosFragment.video.VideoFragment;
 import com.learning.gptw.greatplacetowork_learning.Login.LoginGreatPlaceToWork;
@@ -30,25 +31,27 @@ import com.learning.gptw.greatplacetowork_learning.Quiz.QuizViewCardFragment.Qui
 import com.learning.gptw.greatplacetowork_learning.R;
 
 
-public class MainActivity extends AppCompatActivity
-        implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
+
+
     FragmentManager fm = getSupportFragmentManager();
+
     private FABToolbarLayout layout;
     private View one, two, three, four;
     private View fab;
     private SharedPreferences prefs;
     private int idUsers;
+
     public static final String TAG2 = MainActivity.class.getSimpleName();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-
         prefs = getSharedPreferences("preferences", Context.MODE_PRIVATE);
-
-
         envioParam();
 
 
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void envioParam() {
-        idUsers = getIntent().getExtras().getInt("idUser");
+        idUsers = getIntent().getExtras().getInt(IntentExtraKeyParamsConstants.ID_USER);
 
         Log.i("idUserMain", String.valueOf(idUsers));
 

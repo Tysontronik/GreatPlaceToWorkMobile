@@ -2,8 +2,12 @@ package com.learning.gptw.greatplacetowork_learning.Converters;
 
 import android.util.Log;
 
-import com.learning.gptw.greatplacetowork_learning.Constans.Constans;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.learning.gptw.greatplacetowork_learning.Constans.Constants;
 import com.learning.gptw.greatplacetowork_learning.Exception.JsonConvertException;
+import com.learning.gptw.greatplacetowork_learning.Utils.StringUtils;
+import com.learning.gptw.greatplacetowork_learning.Utils.ValidatorUtil;
 
 import org.json.JSONObject;
 
@@ -13,49 +17,48 @@ public class GenericJsonToObjectConverter<T> {
      * Logger tag
      */
     private static final String LOGGER_TAG = GenericJsonToObjectConverter.class.getSimpleName();
-
     /**
-     * Class reference
+     * Status of execution
      */
-    Class<T> typedClassReference;
+    private String status;
 
     /**
      * Convert a JSON string to Object un generic Type
      *
-     * @param jsonString
+     * @param jsonString JSON string to parse in object
      * @return T generic type
      */
     public T jsonToObject(String jsonString, Class<T> objectClass) throws JsonConvertException {
 
-        typedClassReference = objectClass;
-
         JSONObject event;
         JSONObject data;
-        String status;
 
-        T object = null;
-        Log.i(LOGGER_TAG, jsonString);
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        T object;
 
         try {
             event = new JSONObject(jsonString);
             status = event.getString("status");
-
-            if(Constans.OK_STATUS_RESPONSE.equals(status)){
-
+            if (Constants.OK_STATUS_RESPONSE.equals(status)) {
                 data = event.getJSONObject("data");
-                object = objectClass.newInstance();
-
-
-            }else{
-                throw new JsonConvertException(status,"GPTW API response an error status");
+                Log.i(LOGGER_TAG, String.valueOf(data));
+                object = objectMapper.readValue(String.valueOf(data), objectClass);
+            } else {
+                throw new JsonConvertException(StringUtils.isNotEmptyOrNull(status) ? status : Constants.NOT_FOUND_STATUS_RESPONSE, "GPTW API response an error status");
             }
-
         } catch (Exception e) {
-
-            throw new JsonConvertException(jsonString,e);
+            status = Constants.EXCEPTION_STATUS_RESPONSE;
+            throw new JsonConvertException(Constants.EXCEPTION_STATUS_RESPONSE, jsonString, e);
         }
-
         return object;
     }
 
+    /**
+     * get the status of execution
+     * @return  status of execution
+     */
+    public String getStatus() {
+        return status;
+    }
 }

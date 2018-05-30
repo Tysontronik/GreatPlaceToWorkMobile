@@ -1,25 +1,23 @@
 package com.learning.gptw.greatplacetowork_learning.Models;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.sql.Time;
 
-/**
- * Created by Dell on 23/01/2018.
- */
+public class Login extends RestRequestDTO implements Serializable {
 
-public class Login implements Serializable {
-
-    private String user;
-    private String password;
     private int idUsuario;
     private int idRol;
     private Boolean active;
     private String correo;
+    private String contrasenia;
     private String nombres;
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String rfc;
     private String genero;
-    private String fechaNacimiento;
+    private Date fechaNacimiento;
+    private String fechaNacimientoDatePicker;
     private String calle;
     private String numero;
     private String colonia;
@@ -28,48 +26,81 @@ public class Login implements Serializable {
     private String codigoPostal;
     private String posicion;
     private String nivelEmpresarial;
+    private String supervisor;
     private String mentor;
+    private String correoMentor;
     private String nacionalidad;
     private String numeroEmpleado;
     private String nombreReportar;
     private Integer idGrupo;
     private String lastSessionDate;
-    private String lastSessionHour;
+    private Time lastSessionHour;
 
-    public String getUser() {
-        return this.user;
+    public Login() {
     }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getIdUsuario() {
-        return this.idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
+    public Login(int idUsuario, int idRol, Boolean active, String correo, String contrasenia, String nombres,
+                      String apellidoPaterno, String apellidoMaterno, String rfc, String genero, Date fechaNacimiento,
+                      String calle, String numero, String colonia, String municipio, String estado, String codigoPostal,
+                      String posicion, String nivelEmpresarial, String supervisor, String mentor, String correoMentor,
+                      String nacionalidad, String numeroEmpleado, String nombreReportar, Rol rol, Integer idGrupo,
+                      String lastSessionDate, Time lastSessionHour) {
         this.idUsuario = idUsuario;
+        this.idRol = idRol;
+        this.active = active;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+        this.nombres = nombres;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.rfc = rfc;
+        this.genero = genero;
+        this.fechaNacimiento = fechaNacimiento;
+        this.calle = calle;
+        this.numero = numero;
+        this.colonia = colonia;
+        this.municipio = municipio;
+        this.estado = estado;
+        this.codigoPostal = codigoPostal;
+        this.posicion = posicion;
+        this.nivelEmpresarial = nivelEmpresarial;
+        this.supervisor = supervisor;
+        this.mentor = mentor;
+        this.correoMentor = correoMentor;
+        this.nacionalidad = nacionalidad;
+        this.numeroEmpleado = numeroEmpleado;
+        this.nombreReportar = nombreReportar;
+        this.idGrupo = idGrupo;
+        this.lastSessionDate = lastSessionDate;
+        this.lastSessionHour = lastSessionHour;
+    }
+
+    public Integer getIdGrupo() {
+        return idGrupo;
+    }
+
+    public void setIdGrupo(Integer idGrupo) {
+        this.idGrupo = idGrupo;
     }
 
     public int getIdRol() {
-        return this.idRol;
+        return idRol;
     }
 
     public void setIdRol(int idRol) {
         this.idRol = idRol;
     }
 
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     public Boolean getActive() {
-        return this.active;
+        return active;
     }
 
     public void setActive(Boolean active) {
@@ -77,11 +108,19 @@ public class Login implements Serializable {
     }
 
     public String getCorreo() {
-        return this.correo;
+        return correo;
     }
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public String getNombres() {
@@ -124,11 +163,11 @@ public class Login implements Serializable {
         this.genero = genero;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -196,12 +235,28 @@ public class Login implements Serializable {
         this.nivelEmpresarial = nivelEmpresarial;
     }
 
+    public String getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(String supervisor) {
+        this.supervisor = supervisor;
+    }
+
     public String getMentor() {
         return mentor;
     }
 
     public void setMentor(String mentor) {
         this.mentor = mentor;
+    }
+
+    public String getCorreoMentor() {
+        return correoMentor;
+    }
+
+    public void setCorreoMentor(String correoMentor) {
+        this.correoMentor = correoMentor;
     }
 
     public String getNacionalidad() {
@@ -228,14 +283,6 @@ public class Login implements Serializable {
         this.nombreReportar = nombreReportar;
     }
 
-    public Integer getIdGrupo() {
-        return idGrupo;
-    }
-
-    public void setIdGrupo(Integer idGrupo) {
-        this.idGrupo = idGrupo;
-    }
-
     public String getLastSessionDate() {
         return lastSessionDate;
     }
@@ -244,12 +291,20 @@ public class Login implements Serializable {
         this.lastSessionDate = lastSessionDate;
     }
 
-    public String getLastSessionHour() {
+    public Time getLastSessionHour() {
         return lastSessionHour;
     }
 
-    public void setLastSessionHour(String lastSessionHour) {
+    public void setLastSessionHour(Time lastSessionHour) {
         this.lastSessionHour = lastSessionHour;
+    }
+
+    public String getFechaNacimientoDatePicker() {
+        return fechaNacimientoDatePicker;
+    }
+
+    public void setFechaNacimientoDatePicker(String fechaNacimientoDatePicker) {
+        this.fechaNacimientoDatePicker = fechaNacimientoDatePicker;
     }
 
 }

@@ -17,31 +17,20 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Window;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.learning.gptw.greatplacetowork_learning.Constans.Constans;
-import com.learning.gptw.greatplacetowork_learning.Constans.UrlConstants;
+import com.learning.gptw.greatplacetowork_learning.Constans.IntentExtraKeyParamsConstants;
+import com.learning.gptw.greatplacetowork_learning.Converters.GenericJsonToObjectConverter;
 import com.learning.gptw.greatplacetowork_learning.Inicio.FragmentInicio.MainActivity;
-import com.learning.gptw.greatplacetowork_learning.Listener.GenericResponseListener;
-import com.learning.gptw.greatplacetowork_learning.Listener.ResponseErrorListener;
 import com.learning.gptw.greatplacetowork_learning.Login.LoginGreatPlaceToWork;
 import com.learning.gptw.greatplacetowork_learning.Models.Login;
 import com.learning.gptw.greatplacetowork_learning.R;
 import com.learning.gptw.greatplacetowork_learning.Services.LoginService;
 import com.learning.gptw.greatplacetowork_learning.Utils.NetworkUtil;
+import com.learning.gptw.greatplacetowork_learning.Utils.SharedPreferencesUtil;
 import com.learning.gptw.greatplacetowork_learning.Utils.StringUtils;
-import com.learning.gptw.greatplacetowork_learning.Utils.UserPrefsUtil;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.learning.gptw.greatplacetowork_learning.Utils.ValidatorUtil;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -60,96 +49,113 @@ public class SplashGreatPlaceToWork extends Activity {
      * Tag for logger
      **/
     private static final String LOGGER_TAG = SplashGreatPlaceToWork.class.getSimpleName();
-
-
     /**
-     * Intance attributes
+     * The current context of the App
+     */
+    private Context context;
+    /**
+     * Shared Preferences attributes
      **/
-    private SharedPreferences prefs;
-
-    private LoginService _LoginService = new LoginService();
-
-    private Login successLogin;
+    private SharedPreferences sharedPreferences;
+    /**
+     * This object stores  all the login data
+     */
+    private Login sessionUserData;
+    /**
+     * username recover from login object or the shared preferences
+     */
+    private String username;
+    /**
+     * password recover from login object or the shared preferences
+     */
+    private String password;
+    /**
+     * Login service for login in the app, this invoke a remote Rest login service from GPTW api
+     */
+    private LoginService _loginService;
 
 
     /**
-     * Userdata autoload and set of application Look
+     * Userdata auto load and set of application Look
      *
-     * @param savedInstanceState
+     * @param savedInstanceState Framework parameter required
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+        Log.i(LOGGER_TAG, "Screen Splash Init...");
+
+        this.context = this;
+        this.sharedPreferences = SharedPreferencesUtil.getAppSharedPreferences(context);
 
         // Set portrait orientation and hide the top title bar
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        //Recover the User preference from app cache
-        this.prefs = getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        //Check  the network status and the access to the GWTP web API
+        NetworkUtil.isConnectedMobile(context);
+        NetworkUtil.isConnectedWifi(context);
 
-        //Check  the network status and the accesibility to the GWTP web API
-        NetworkUtil.isConnectedMobile(this);
-        NetworkUtil.isConnectedWifi(this);
-
-        //Load the user Data if exist
-        loadDataUser();
-        timerTask();
-
+        loginAndRedirect();
     }
 
-
-    public void loadDataUser() {
-
-        if (UserPrefsUtil.isUserCredentialsSharedPreferencesData(this.prefs)) {
-
-            _LoginService.login(
-                    UserPrefsUtil.getUserSharedPreferencesAttribute(prefs, UserPrefsUtil.USER_KEY),
-                    UserPrefsUtil.getUserSharedPreferencesAttribute(prefs, UserPrefsUtil.PASSWORD_KEY),
-                    this,
-                    successLogin
-            );
-
-        } else {
-
-
-        }
+    /**
+     * Define the app behavior on resume
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
     }
 
-    private void timerTask() {
+    /**
+     * Define the app behavior on pause
+     */
+    @Override
+    public void onPause() {
+        unregisterReceiver(networkStateReceiver);
+        super.onPause();
+    }
+
+    /**
+     * Login in the app and redirect to main content or to Login screen if is not logged
+     */
+    private void loginAndRedirect() {
+
+        Timer timer = new Timer();
 
         setContentView(R.layout.activity_splash_great_place_to_work);
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+
         TimerTask task = new TimerTask() {
+
             @Override
             public void run() {
 
-                Intent intentLogin = new Intent(SplashGreatPlaceToWork.this, LoginGreatPlaceToWork.class);
-                Intent intentMain = new Intent(SplashGreatPlaceToWork.this, MainActivity.class);
+                Intent intentRedirect;
 
-                if (!TextUtils.isEmpty(
-                        UserPrefsUtil.getUserSharedPreferencesAttribute(prefs, UserPrefsUtil.USER_KEY)) &&
-                        !TextUtils.isEmpty(UserPrefsUtil.getUserSharedPreferencesAttribute(prefs, UserPrefsUtil.PASSWORD_KEY))) {
-                    intentMain.putExtra("idUser", successLogin.getIdUsuario());
-                    startActivity(intentMain);
+                if (isUserLoggedIn(sharedPreferences)) {
+                    intentRedirect = new Intent(context, MainActivity.class);
+                    intentRedirect.putExtra(IntentExtraKeyParamsConstants.ID_USER, sessionUserData.getIdUsuario());
+                    intentRedirect.putExtra(IntentExtraKeyParamsConstants.USERNAME, username);
+                    intentRedirect.putExtra(IntentExtraKeyParamsConstants.PASSWORD, password);
                 } else {
-                    intentLogin.putExtra("idUser", successLogin.getIdUsuario());
-                    startActivity(intentLogin);
 
+                    intentRedirect = new Intent(context, LoginGreatPlaceToWork.class);
                 }
+                startActivity(intentRedirect);
                 finish();
             }
         };
 
-
-        // Simulate a long loading process on application startup.
-        Timer timer = new Timer();
         timer.schedule(task, SPLASH_SCREEN_DELAY);
     }
 
 
     /**
-     *
+     * BroadcastReceiver to moninate the network connection
      */
     private BroadcastReceiver networkStateReceiver = new BroadcastReceiver() {
         @Override
@@ -162,27 +168,46 @@ public class SplashGreatPlaceToWork extends Activity {
     };
 
     /**
+     * Check the User login status
      *
+     * @return True if the user is logged
      */
-    @Override
-    public void onResume() {
-        super.onResume();
-        registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+    private Boolean isUserLoggedIn(SharedPreferences sharedPreferences) {
+
+        Boolean activeUserFlag;
+        String loggedFlag = SharedPreferencesUtil.getSharedPreferencesAttribute(sharedPreferences, SharedPreferencesUtil.IS_LOGGED_KEY);
+
+        if (Boolean.valueOf(loggedFlag)) {
+            activeUserFlag = Boolean.valueOf(loggedFlag);
+            this.sessionUserData = new GenericJsonToObjectConverter<Login>()
+                    .jsonToObject(SharedPreferencesUtil.getSharedPreferencesAttribute(sharedPreferences,
+                            SharedPreferencesUtil.USER_DATA), Login.class);
+        } else {
+
+            username = SharedPreferencesUtil.getSharedPreferencesAttribute(sharedPreferences, SharedPreferencesUtil.USER_KEY);
+            password = SharedPreferencesUtil.getSharedPreferencesAttribute(sharedPreferences, SharedPreferencesUtil.PASSWORD_KEY);
+
+            if (!StringUtils.isAnyEmptyOrNull(username, password)) {
+                _loginService = new LoginService(this.context);
+                this.sessionUserData = _loginService.login(username, password);
+            }
+            activeUserFlag = ValidatorUtil.isNotNull(this.sessionUserData);
+        }
+
+        return activeUserFlag;
     }
 
-    @Override
-    public void onPause() {
-        unregisterReceiver(networkStateReceiver);
-        super.onPause();
-    }
-
+    /**
+     * Log if the device is connected or disconnected
+     *
+     * @param networkInfo from device
+     */
     private void onNetworkChange(NetworkInfo networkInfo) {
         if (networkInfo != null) {
             if (networkInfo.getState() == NetworkInfo.State.CONNECTED) {
-                Log.d("MenuActivity", "CONNECTED");
+                Log.d(LOGGER_TAG, "CONNECTED");
             } else {
-                Log.d("MenuActivity", "DISCONNECTED");
-
+                Log.d(LOGGER_TAG, "DISCONNECTED");
             }
         }
     }

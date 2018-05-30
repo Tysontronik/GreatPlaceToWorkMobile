@@ -5,7 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
-import com.learning.gptw.greatplacetowork_learning.Constans.Constans;
+import com.learning.gptw.greatplacetowork_learning.Constans.UrlConstants;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -52,27 +52,28 @@ public class NetworkUtil {
 
     /**
      * Check the status of the communication whit GPTW web Api services
+     *
      * @param context
      * @return
      */
-    public static boolean isOnline(Context context) {
+    public static Boolean isOnline(Context context) {
 
-        RunnableFuture<Boolean> futureRun =
-                new FutureTask<>(
-                        new NetworkTestConnectionCallUtil(
-                                Constans.servicesURL,
-                                1500,
-                                200,
-                                context)
-                );
+        RunnableFuture<Boolean> futureRun = new FutureTask<>(
+                new NetworkTestConnectionCallUtil(
+                        UrlConstants.servicesURL,
+                        1500,
+                        200,
+                        context)
+        );
+
         new Thread(futureRun).start();
 
         try {
             boolean evalResult = futureRun.get();
-            Log.d(LOGGER_TAG, "Checking the communication whit GPTW API services ... [" + evalResult + "]");
+            Log.d(LOGGER_TAG, "[" +UrlConstants.servicesURL + "] Checking the communication whit GPTW API services ... [" + evalResult + "]");
             return evalResult;
         } catch (InterruptedException | ExecutionException e) {
-            Log.e(LOGGER_TAG, "Error in the communication whit GPTW API services ["+Constans.servicesURL+"]",e);
+            Log.e(LOGGER_TAG, "Error in the communication whit GPTW API services [" + UrlConstants.servicesURL + "]", e);
             return false;
         }
     }

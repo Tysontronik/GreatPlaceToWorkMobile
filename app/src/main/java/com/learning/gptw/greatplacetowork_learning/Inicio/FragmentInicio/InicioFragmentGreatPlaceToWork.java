@@ -24,7 +24,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.learning.gptw.greatplacetowork_learning.Adapter.IsOnLineNotFound;
 import com.learning.gptw.greatplacetowork_learning.Adapter.SemanaAdapter;
-import com.learning.gptw.greatplacetowork_learning.Constans.Constans;
+import com.learning.gptw.greatplacetowork_learning.Constans.UrlConstants;
 import com.learning.gptw.greatplacetowork_learning.Models.ActividadModulo;
 import com.learning.gptw.greatplacetowork_learning.Models.AsignacionesModulo;
 import com.learning.gptw.greatplacetowork_learning.Models.AutoEvaluacionModulo;
@@ -39,7 +39,6 @@ import com.learning.gptw.greatplacetowork_learning.Models.ModuloInicio;
 import com.learning.gptw.greatplacetowork_learning.Models.RecursosModulo;
 import com.learning.gptw.greatplacetowork_learning.R;
 import com.learning.gptw.greatplacetowork_learning.Utils.NetworkUtil;
-import com.learning.gptw.greatplacetowork_learning.Utils.UserPrefsUtil;
 import com.library.NavigationBar;
 import com.library.NvTab;
 
@@ -68,7 +67,7 @@ public class InicioFragmentGreatPlaceToWork extends Fragment implements Navigati
     private static final String ARG_PARAM2 = "param2";
     private static final int MIN_STATE_NUMBER = 1;
     private static final int MAX_STATE_NUMBER = 4;
-    public static String urlInicio = Constans.servicesURL + "modulo/get?idModulo=" + 1;
+    public static String urlInicio = UrlConstants.servicesURL + "modulo/get?idModulo=" + 1;
     public TextView tvtil;
     FragmentManager fm;
     private TextView tv_textInicio;
@@ -162,7 +161,7 @@ public class InicioFragmentGreatPlaceToWork extends Fragment implements Navigati
         mRequestQueue = Volley.newRequestQueue(getContext());
 
         //String Request initialized
-        mStringRequest = new StringRequest(Request.Method.GET, Constans.servicesURL + "/modulo/getForUsuario?idUsuario="+idUserParam, new Response.Listener<String>() {
+        mStringRequest = new StringRequest(Request.Method.GET, UrlConstants.servicesURL + "/modulo/getForUsuario?idUsuario="+idUserParam, new Response.Listener<String>() {
 
 
             @Override

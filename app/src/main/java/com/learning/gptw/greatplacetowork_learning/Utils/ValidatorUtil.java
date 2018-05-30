@@ -28,4 +28,22 @@ public class ValidatorUtil {
         return password.length() >= 4;
 
     }
+
+    /**
+     * Validate if the object is not null
+     * @param objectToValidate
+     * @return Boolean , True if the object is not null
+     */
+    public static Boolean isNotNull(Object objectToValidate){
+        return objectToValidate != null?  Boolean.TRUE : Boolean.FALSE;
+    }
+
+    /**
+     * Validate if the object is null
+     * @param objectToValidate
+     * @return Boolean , True if the object is null
+     */
+    public static Boolean isNull(Object objectToValidate){
+        return objectToValidate == null?  Boolean.TRUE : Boolean.FALSE;
+    }
 }

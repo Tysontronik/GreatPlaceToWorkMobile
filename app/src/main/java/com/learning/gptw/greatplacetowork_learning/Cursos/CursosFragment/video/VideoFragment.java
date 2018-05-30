@@ -21,7 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.learning.gptw.greatplacetowork_learning.Constans.Constans;
+import com.learning.gptw.greatplacetowork_learning.Constans.UrlConstants;
 import com.learning.gptw.greatplacetowork_learning.Models.MaterialModulo;
 import com.learning.gptw.greatplacetowork_learning.R;
 
@@ -143,7 +143,7 @@ loadMaterial();
 
 
         //String Request initialized
-        mStringRequest = new StringRequest(Request.Method.GET,Constans.servicesURL+Constans.materialURL+urlMaterial, new Response.Listener<String>() {
+        mStringRequest = new StringRequest(Request.Method.GET, UrlConstants.servicesURL+UrlConstants.materialURL+urlMaterial, new Response.Listener<String>() {
 
 
             @Override
@@ -171,7 +171,7 @@ loadMaterial();
                         materialModulo.ruta = data.getString("ruta");
                         VideoView Viewvideo = getActivity().findViewById(R.id.Viewvideo);
                         Uri VideoMaterial = Uri.parse(data.getString("ruta"));
-                        Viewvideo.setVideoURI(Uri.parse(Constans.prendizajeUrl+VideoMaterial));
+                        Viewvideo.setVideoURI(Uri.parse(UrlConstants.prendizajeUrl+VideoMaterial));
                         Viewvideo.start();
                         Viewvideo.setMediaController(mediaController);
                         materialModulo.rutaTranscript = data.getString("rutaTranscript");

@@ -104,7 +104,7 @@ public class ExtraMaterialfragment extends Fragment {
 
 
         //String Request initialized
-    mStringRequest = new StringRequest(Request.Method.GET,Constans.servicesURL+"material/get?idMaterial="+urlMaterial, new Response.Listener<String>() {
+    mStringRequest = new StringRequest(Request.Method.GET,Constants.servicesURL+"material/get?idMaterial="+urlMaterial, new Response.Listener<String>() {
 
 
             @Override
@@ -132,7 +132,7 @@ public class ExtraMaterialfragment extends Fragment {
                         materialModulo.ruta = data.getString("ruta");
                         VideoView Viewvideo = getActivity().findViewById(R.id.Viewvideo);
                         Uri VideoMaterial = Uri.parse(data.getString("ruta"));
-                        Viewvideo.setVideoURI(Uri.parse(Constans.prendizajeUrl+VideoMaterial));
+                        Viewvideo.setVideoURI(Uri.parse(Constants.prendizajeUrl+VideoMaterial));
                         Viewvideo.start();
                         Viewvideo.setMediaController(mediaController);
                         materialModulo.rutaTranscript = data.getString("rutaTranscript");

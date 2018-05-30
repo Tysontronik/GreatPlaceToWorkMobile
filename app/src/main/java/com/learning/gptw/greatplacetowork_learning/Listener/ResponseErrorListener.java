@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
 
 /**
  * Error listener
@@ -11,17 +12,19 @@ import com.android.volley.VolleyError;
 public class ResponseErrorListener implements Response.ErrorListener {
 
     /**
+     * Logger tag
      *
      * @param error
      */
-    private static final String LOGGER_TAG =  ResponseErrorListener.class.getSimpleName();
+    private static final String LOGGER_TAG = ResponseErrorListener.class.getSimpleName();
 
     /**
      * Implementation to handle the request errors
+     *
      * @param error
      */
     @Override
     public void onErrorResponse(VolleyError error) {
-        Log.i(LOGGER_TAG, "Error :" + error.toString());
+        Log.e(LOGGER_TAG, "Error in the Volley request  :", error);
     }
 }

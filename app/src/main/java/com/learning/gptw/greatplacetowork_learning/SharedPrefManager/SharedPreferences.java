@@ -3,7 +3,7 @@ package com.learning.gptw.greatplacetowork_learning.SharedPrefManager;
 import android.app.Activity;
 import android.content.Context;
 
-import com.learning.gptw.greatplacetowork_learning.Constans.Constans;
+import com.learning.gptw.greatplacetowork_learning.Constans.Constants;
 
 
 public class SharedPreferences {
@@ -30,23 +30,23 @@ public class SharedPreferences {
 
     private static void setSharedPreferenceString(int key, String value) {
 
-        android.content.SharedPreferences sharedPref = Constans.context.getSharedPreferences("CODEOriginationValues", Context.MODE_PRIVATE);
+        android.content.SharedPreferences sharedPref = Constants.context.getSharedPreferences("CODEOriginationValues", Context.MODE_PRIVATE);
         android.content.SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(Constans.context.getString(key), value);
+        editor.putString(Constants.context.getString(key), value);
         editor.commit();
     }
 
     private static String getSharedPreferenceString(int key, int defaultValueKey) {
 
-        android.content.SharedPreferences sharedPref = Constans.context.getSharedPreferences("CODEOriginationValues", Context.MODE_PRIVATE);
-        String defaultValue = Constans.context.getResources().getString(defaultValueKey);
-        String value = sharedPref.getString(Constans.context.getResources().getString(key), defaultValue);
+        android.content.SharedPreferences sharedPref = Constants.context.getSharedPreferences("CODEOriginationValues", Context.MODE_PRIVATE);
+        String defaultValue = Constants.context.getResources().getString(defaultValueKey);
+        String value = sharedPref.getString(Constants.context.getResources().getString(key), defaultValue);
         return value;
     }
 
     private static void setSharedPreferenceInt(int key, int value) {
 
-        Activity activity = (Activity) Constans.context;
+        Activity activity = (Activity) Constants.context;
 
         android.content.SharedPreferences sharedPref = activity.getSharedPreferences("CODEOriginationValues", Context.MODE_PRIVATE);
         android.content.SharedPreferences.Editor editor = sharedPref.edit();
@@ -56,7 +56,7 @@ public class SharedPreferences {
 
     private static int getSharedPreferenceInt(int key, int defaultValueKey) {
 
-        Activity activity = (Activity) Constans.context;
+        Activity activity = (Activity) Constants.context;
 
         android.content.SharedPreferences sharedPref = activity.getSharedPreferences("CODEOriginationValues", Context.MODE_PRIVATE);
         int defaultValue = activity.getResources().getInteger(defaultValueKey);
@@ -66,17 +66,17 @@ public class SharedPreferences {
 
     private static void setSharedPreferenceLong(int key, long value) {
 
-        android.content.SharedPreferences sharedPref = Constans.context.getSharedPreferences("CODEOriginationValues", Context.MODE_PRIVATE);
+        android.content.SharedPreferences sharedPref = Constants.context.getSharedPreferences("CODEOriginationValues", Context.MODE_PRIVATE);
         android.content.SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putLong(Constans.context.getString(key), value);
+        editor.putLong(Constants.context.getString(key), value);
         editor.commit();
     }
 
     private static long getSharedPreferenceLong(int key) {
 
-        android.content.SharedPreferences sharedPref = Constans.context.getSharedPreferences("CODEOriginationValues", Context.MODE_PRIVATE);
+        android.content.SharedPreferences sharedPref = Constants.context.getSharedPreferences("CODEOriginationValues", Context.MODE_PRIVATE);
         long defaultValue = 0;
-        long value = sharedPref.getLong(Constans.context.getResources().getString(key), defaultValue);
+        long value = sharedPref.getLong(Constants.context.getResources().getString(key), defaultValue);
         return value;
     }
 }

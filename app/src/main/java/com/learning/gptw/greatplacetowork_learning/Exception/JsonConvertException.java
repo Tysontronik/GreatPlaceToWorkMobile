@@ -7,7 +7,7 @@ import com.learning.gptw.greatplacetowork_learning.Utils.StringUtils;
 /**
  * Exception for Json parse errors
  */
-public class JsonConvertException extends Exception {
+public class JsonConvertException extends RuntimeException {
 
     /**
      * Logger tag
@@ -52,8 +52,9 @@ public class JsonConvertException extends Exception {
      * Throw the exception an nest the root esception cause , store the failed Json
      * @param jsonFailed
      */
-    public JsonConvertException(String jsonFailed,Exception ex) {
+    public JsonConvertException(String status,String jsonFailed,Exception ex) {
         super(jsonFailed,ex);
+        this.status = status;
         this.jsonFailed = jsonFailed;
     }
 

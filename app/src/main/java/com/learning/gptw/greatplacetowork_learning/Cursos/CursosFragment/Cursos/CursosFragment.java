@@ -28,7 +28,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.learning.gptw.greatplacetowork_learning.Adapter.CursosAdapter;
-import com.learning.gptw.greatplacetowork_learning.Constans.Constans;
+import com.learning.gptw.greatplacetowork_learning.Constans.UrlConstants;
 import com.learning.gptw.greatplacetowork_learning.Models.ActividadModulo;
 import com.learning.gptw.greatplacetowork_learning.Models.AsignacionesModulo;
 import com.learning.gptw.greatplacetowork_learning.Models.AutoEvaluacionModulo;
@@ -50,8 +50,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.learning.gptw.greatplacetowork_learning.Login.LoginGreatPlaceToWork.TAG;
-
 /**
  * * Franscico Javier Flores Morales
  * A simple {@link Fragment} subclass.
@@ -62,6 +60,11 @@ import static com.learning.gptw.greatplacetowork_learning.Login.LoginGreatPlaceT
  * create an instance of this fragment.
  */
 public class CursosFragment extends Fragment {
+
+
+    private  static final String LOGGER_TAG =  CursosFragment.class.getSimpleName();
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -163,7 +166,7 @@ public class CursosFragment extends Fragment {
         cursoId = cursoInicio.curso.idCurso;
         Log.i("idcursosos", String.valueOf(cursoId));
 
-        mStringRequest = new StringRequest(Request.Method.GET, Constans.servicesURL+Constans.cursosURL + cursoId, new Response.Listener<String>() {
+        mStringRequest = new StringRequest(Request.Method.GET, UrlConstants.servicesURL+UrlConstants.cursosURL + cursoId, new Response.Listener<String>() {
             //  mStringRequest = new StringRequest(Request.Method.GET, "http://10.1.2.71:9191/api/curso/get?idCurso="+cursoId, new Response.Listener<String>() {
 
             @Override
@@ -481,7 +484,7 @@ public class CursosFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Log.i(TAG, "Error :" + error.toString());
+                Log.i(LOGGER_TAG, "Error :" + error.toString());
             }
         });
 

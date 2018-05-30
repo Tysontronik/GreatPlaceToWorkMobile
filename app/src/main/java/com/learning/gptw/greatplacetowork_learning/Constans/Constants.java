@@ -6,11 +6,11 @@ import org.json.JSONObject;
 
 /**
  * Francisco Javier Flores Morales
- * Constans.java
+ * Constants.java
  * Created by Dell on 22/01/2018.
  */
 
-public class Constans {
+public class Constants {
 
 
     public static final String EMPTY_STRING  = "";
@@ -27,16 +27,13 @@ public class Constans {
     public static final String LOGGEDIN_SHARED_PREF = "loggedin";
     public static Context context;
     public static JSONObject loggedUser;
-    public static String servicesURL = "http://10.27.148.136:8181/gptw-web/api/";
-    public static String actividadURL ="actividad/get?idActividad=";
-    public static String materialURL="material/get?idMaterial=";
-    public static  String cursosURL ="curso/get?idCurso=";
-    public static  String evaluacionURL="evaluacion/get?idEvaluacion=";
-    public  static  String prendizajeUrl="https://s3.amazonaws.com/repositorioaprendizaje/";
+
+
 
     public static final String OK_STATUS_RESPONSE = "OK";
-
     public static final String NOT_FOUND_STATUS_RESPONSE = "NOT_FOUND";
+    public static  final String WRONG_PASSWORD_RESPONSE = "WRONG_PASSWORD";
+    public static final String EXCEPTION_STATUS_RESPONSE = "RESPONSE_ERROR";
 
 
 }

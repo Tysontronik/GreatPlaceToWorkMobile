@@ -3,19 +3,12 @@ package com.learning.gptw.greatplacetowork_learning.Quiz.QuizFragment;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.icu.text.RelativeDateTimeFormatter;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -23,7 +16,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,8 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.learning.gptw.greatplacetowork_learning.Adapter.RespuestaAdapter;
-import com.learning.gptw.greatplacetowork_learning.Constans.Constans;
-import com.learning.gptw.greatplacetowork_learning.Inicio.FragmentInicio.MainActivity;
+import com.learning.gptw.greatplacetowork_learning.Constans.UrlConstants;
 import com.learning.gptw.greatplacetowork_learning.Models.EvaluacionModulo;
 import com.learning.gptw.greatplacetowork_learning.Models.PreguntasModulo;
 import com.learning.gptw.greatplacetowork_learning.Models.RespuestasModulo;
@@ -183,7 +174,7 @@ public class QuizQuestionsFragment extends Fragment {
 
     private void loadQuiztitle() {
 
-        urlLoadQuiztitle = Constans.servicesURL + Constans.evaluacionURL + idEvaluaciones;
+        urlLoadQuiztitle = UrlConstants.servicesURL + UrlConstants.evaluacionURL + idEvaluaciones;
 
 
         //RequestQueue initialized

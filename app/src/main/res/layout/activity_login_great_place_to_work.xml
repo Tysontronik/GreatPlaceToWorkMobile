@@ -95,7 +95,8 @@
                     android:layout_marginTop="15dp"
                     android:background="@drawable/clic"
                     android:text="@string/login_ingresar"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:onClick="loginEvent"/>
 
                 <TextView
                     android:id="@+id/tv_forgotten_password"
