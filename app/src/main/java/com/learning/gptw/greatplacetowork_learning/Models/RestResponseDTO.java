@@ -3,7 +3,7 @@ package com.learning.gptw.greatplacetowork_learning.Models;
 /**
  * provide of status property to DTO object s
  */
-public class RestRequestDTO {
+public class RestResponseDTO {
 
     /**
      * getter od status

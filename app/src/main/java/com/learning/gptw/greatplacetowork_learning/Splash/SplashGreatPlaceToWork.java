@@ -20,11 +20,13 @@ import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.Window;
 
+import com.learning.gptw.greatplacetowork_learning.Callback.VolleyCallback;
 import com.learning.gptw.greatplacetowork_learning.Constans.IntentExtraKeyParamsConstants;
 import com.learning.gptw.greatplacetowork_learning.Converters.GenericJsonToObjectConverter;
 import com.learning.gptw.greatplacetowork_learning.Inicio.FragmentInicio.MainActivity;
 import com.learning.gptw.greatplacetowork_learning.Login.LoginGreatPlaceToWork;
 import com.learning.gptw.greatplacetowork_learning.Models.Login;
+import com.learning.gptw.greatplacetowork_learning.Models.RestResponseDTO;
 import com.learning.gptw.greatplacetowork_learning.R;
 import com.learning.gptw.greatplacetowork_learning.Services.LoginService;
 import com.learning.gptw.greatplacetowork_learning.Utils.NetworkUtil;
@@ -180,7 +182,7 @@ public class SplashGreatPlaceToWork extends Activity {
         if (Boolean.valueOf(loggedFlag)) {
             activeUserFlag = Boolean.valueOf(loggedFlag);
             this.sessionUserData = new GenericJsonToObjectConverter<Login>()
-                    .jsonToObject(SharedPreferencesUtil.getSharedPreferencesAttribute(sharedPreferences,
+                    .jsonNoStandartToObject(SharedPreferencesUtil.getSharedPreferencesAttribute(sharedPreferences,
                             SharedPreferencesUtil.USER_DATA), Login.class);
         } else {
 
@@ -189,7 +191,13 @@ public class SplashGreatPlaceToWork extends Activity {
 
             if (!StringUtils.isAnyEmptyOrNull(username, password)) {
                 _loginService = new LoginService(this.context);
-                this.sessionUserData = _loginService.login(username, password);
+                _loginService.login(username, password, new VolleyCallback() {
+                    @Override
+                    public void onSuccess(RestResponseDTO result) {
+                        sessionUserData = _loginService.getSessionLoginData();
+                    }
+                });
+
             }
             activeUserFlag = ValidatorUtil.isNotNull(this.sessionUserData);
         }

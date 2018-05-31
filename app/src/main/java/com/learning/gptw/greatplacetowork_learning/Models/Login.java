@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.sql.Time;
 
-public class Login extends RestRequestDTO implements Serializable {
+public class Login extends RestResponseDTO implements Serializable {
 
     private int idUsuario;
     private int idRol;

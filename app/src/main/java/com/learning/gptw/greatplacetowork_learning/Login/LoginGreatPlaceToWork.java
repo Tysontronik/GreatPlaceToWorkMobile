@@ -10,10 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
+import com.learning.gptw.greatplacetowork_learning.Callback.VolleyCallback;
 import com.learning.gptw.greatplacetowork_learning.Constans.Constants;
 import com.learning.gptw.greatplacetowork_learning.Constans.IntentExtraKeyParamsConstants;
 import com.learning.gptw.greatplacetowork_learning.Inicio.FragmentInicio.MainActivity;
 import com.learning.gptw.greatplacetowork_learning.Models.Login;
+import com.learning.gptw.greatplacetowork_learning.Models.RestResponseDTO;
 import com.learning.gptw.greatplacetowork_learning.R;
 import com.learning.gptw.greatplacetowork_learning.Services.LoginService;
 import com.learning.gptw.greatplacetowork_learning.Utils.NetworkUtil;
@@ -106,14 +108,17 @@ public class LoginGreatPlaceToWork extends AppCompatActivity {
      */
     public void loginEvent(View view) {
 
-      LoginService _loginService =  new LoginService(context);
+      final LoginService _loginService =  new LoginService(context);
 
         this.username = String.valueOf(textInputEditTextUser.getText());
         this.password = String.valueOf(textInputEditTextPassword.getText());
-
-        sessionUserData = _loginService.login(username, password);
-
-        //validateLoginMessages(sessionUserData.getStatus());
+        _loginService.login(username, password, new VolleyCallback() {
+            @Override
+            public void onSuccess(RestResponseDTO result) {
+                sessionUserData = _loginService.getSessionLoginData();
+                validateLoginMessages(sessionUserData.getStatus());
+            }
+        });
 
     }
 
@@ -129,10 +134,13 @@ public class LoginGreatPlaceToWork extends AppCompatActivity {
             case Constants.OK_STATUS_RESPONSE:
                 clearTextFields();
                 redirectMain();
+                break;
             case Constants.NOT_FOUND_STATUS_RESPONSE:
                 textInputEditTextUser.setError("Usuario Incorrecto");
+                break;
             case Constants.WRONG_PASSWORD_RESPONSE:
                 textInputEditTextPassword.setError("Password Incorrecto");
+                break;
             default:
                 clearTextFields();
         }
@@ -148,6 +156,7 @@ public class LoginGreatPlaceToWork extends AppCompatActivity {
         intentRedirect.putExtra(IntentExtraKeyParamsConstants.ID_USER, sessionUserData.getIdUsuario());
         intentRedirect.putExtra(IntentExtraKeyParamsConstants.USERNAME, username);
         intentRedirect.putExtra(IntentExtraKeyParamsConstants.PASSWORD, password);
+        startActivity(intentRedirect);
 
     }
 

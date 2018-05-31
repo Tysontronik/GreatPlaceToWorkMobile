@@ -9,16 +9,17 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.learning.gptw.greatplacetowork_learning.Callback.VolleyCallback;
 import com.learning.gptw.greatplacetowork_learning.Converters.GenericJsonToObjectConverter;
 import com.learning.gptw.greatplacetowork_learning.Exception.JsonConvertException;
 import com.learning.gptw.greatplacetowork_learning.Listener.ResponseErrorListener;
-import com.learning.gptw.greatplacetowork_learning.Models.RestRequestDTO;
+import com.learning.gptw.greatplacetowork_learning.Models.RestResponseDTO;
 import com.learning.gptw.greatplacetowork_learning.Utils.ValidatorUtil;
 
 /***
  * Invoke rest api
  */
-public class RestApiInvokerService<T extends RestRequestDTO> {
+public class RestApiInvokerService<T extends RestResponseDTO> {
 
     private static RestApiInvokerService restApiInvokerService;
 
@@ -60,7 +61,7 @@ public class RestApiInvokerService<T extends RestRequestDTO> {
      * @param newObjectClass
      * @return T type parametrizade
      */
-    public T getObjectFromRequest(String url, Class<T> newObjectClass) {
+    public T getObjectFromRequest(final String url,final  Class<T> newObjectClass, final VolleyCallback callback) {
 
         objectClass = newObjectClass;
 
@@ -76,8 +77,9 @@ public class RestApiInvokerService<T extends RestRequestDTO> {
                 try {
                     responseObjectInstance = (T) genericJsonToObjectConverter.jsonToObject(volleyResponse, objectClass);
                     responseObjectInstance.setStatus(genericJsonToObjectConverter.getStatus());
+
                 } catch (JsonConvertException jex) {
-                    Log.e(LOGGER_TAG, "Error in JSON [" + jex.getJsonFailed() + "] converse ERROR CODE[" + jex.getStatus() + "]", jex);
+                    Log.e(LOGGER_TAG, "Error in JSON [" + jex.getJsonFailed() + "] converse error code [" + jex.getStatus() + "]", jex);
                     try{
                         responseObjectInstance = objectClass.newInstance();
                         responseObjectInstance.setStatus(jex.getStatus());
@@ -85,12 +87,15 @@ public class RestApiInvokerService<T extends RestRequestDTO> {
                         Log.e(LOGGER_TAG, "Error in object instance", ex);
                     }
                 }
+
+                callback.onSuccess(responseObjectInstance);
             }
         }, new ResponseErrorListener());
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
         requestQueue.start();
+
         return responseObjectInstance;
     }
 
